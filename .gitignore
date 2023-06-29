@@ -1,3 +1,5 @@
 /query_images/
 /docs/
-/data/
+*/data/
+/code/faiss/*
+*/.ipynb_checkpoints/*

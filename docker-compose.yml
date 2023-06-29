@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  nihonshu:
+    build:
+      args:
+        - BASE_IMAGE=ubuntu:20.04
+        - PYTHON_VERSION=3.9
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+        - ./:/home/user/code
+    ports:
+        # - 8000:8000
+        - 61109:8888
+    command:
+        poetry run jupyter-lab --allow-root --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=''
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
