@@ -9,6 +9,7 @@ services:
       context: .
       dockerfile: Dockerfile
     tty: true
+    shm_size: '2G'
     volumes:
         - ./:/home/user/code
     ports:
